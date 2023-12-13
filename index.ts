@@ -1,7 +1,5 @@
-import { alt } from "./option";
-import { alphanum, charIn, tag } from "./terminal";
-import { separatedList, string } from "./sequence";
-import { Parser } from "./parse";
+import { alphanum, charIn, tag } from "./lib/terminal";
+import { separatedList, string } from "./lib/sequence";
 
 const parser = separatedList<string, string>(
     string([alphanum, charIn("(!) ")]),
