@@ -1,0 +1,11 @@
+{
+  "name": "js-parse",
+  "version": "1.0.0",
+  "description": "javascript parsing test",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc; node out/index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
