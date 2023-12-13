@@ -1,4 +1,4 @@
-import { P, ParseError, ParseErrorReason, ParseResult, Parser, reject } from "./parse";
+import { P, ParseErrorReason, Parser, reject } from "./parse";
 import { Length } from "./parseInput";
 
 /**
@@ -44,25 +44,4 @@ export function complete<I extends Length, O>(parser: Parser<I, O>): Parser<I, O
         }
         return result;
     })
-}
-
-/**
- * In case of inner parser returning an error, applies a transformation to that error.
- */
-export function mapError<I extends Length, O>(parser: Parser<I, O>, transform: (err: ParseError<I>) => ParseError<I>): Parser<I, O> {
-    return P(i => {
-        const result = parser.parseFragment(i);
-        if (result.success) return result;
-        return {
-            ...result,
-            error: transform(result.error)
-        }
-    })
-}
-
-/**
- * Applies a transformation to the ParseResult output of the inner parser.
- */
-export function mapResult<I extends Length, O1, O2>(parser: Parser<I, O1>, transform: (i: ParseResult<I, O1>) => ParseResult<I, O2>): Parser<I, O2> {
-    return P(i => transform(parser.parseFragment(i)));
 }

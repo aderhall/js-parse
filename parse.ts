@@ -1,4 +1,6 @@
-import { complete, cut, mapError, mapResult, uncut } from "./error"
+import { complete, cut, uncut } from "./error"
+import { mapResult } from "./transform"
+import { mapError } from "./transform"
 import { optional, orDefault } from "./option"
 import { Length, Slice } from "./parseInput"
 import { delimited, pair, preceded, repeat, terminated } from "./sequence"
